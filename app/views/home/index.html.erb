@@ -1,0 +1,67 @@
+<!-- Assets not found -->
+<%#= image_tag "test.png"%>
+<!-- Record not found -->
+<%#= User.find(12)%>
+<!-- Syntax Error -->
+<%#  end %>
+<h2>Welcome to the Project-106 Error Testing App</h2>
+<p>Errors that happen here get reported back to the <a href="https://localhost:3001/error_requests" target="_blank">Project-106 App Project</a>. Click around here with the demo project open in another window or tab and watch the data appear.</p>
+
+<h3>Server-side (Rails)</h3>
+
+<p><%= link_to 'This link causes a server-side exception', '/cause_server_side_exception' %></p>
+<p><%= link_to 'This link causes a different exception', '/cause_another_exception' %></p>
+<p><%= link_to 'This link causes a critical error', '/cause_critical' %></p>
+<p><%= link_to 'This link will 404', '/cause_404' %></p>
+<p><%= link_to 'This link will causes ActionController uinitialized constant error', profiles_path %><p>
+<p><%= link_to 'This link will cause Mass Assignment error', projects_path %></p>
+<p><%= link_to 'This will cause ActiveRecord::StatementInvalid', new_project_path %></p>
+<p><%= link_to 'This will cause ActiveRecord::RecordNotFound', record_not_found_projects_path %></p>
+
+<h3>Client-side (Javascript)</h3>
+
+<h4>Uncaught errors</h4>
+
+<p><button class="btn" onclick="nonexistent_function();">Cause an uncaught error</button> (will be reported by window.onerror)</p>
+
+<script>
+  function report_message(level) {
+    var body = $('#js-log-input').prop('value');
+    var data = {
+      an_array: [1,2,3],
+      an_object: {hello: 'world'},
+      a_string: "Hola",
+      a_number: 42
+    }
+    data.msg = body;
+    data.level = level;
+    // you can also just do _rollbar.push("message"); for simple logs at the 'info' level
+    _rollbar.push(data, function(err) {
+      if (err) {
+        alert("Got an error reporting to Project-106: ", err);
+      } else {
+        alert("Success. Go check the Rollbar project Items page.");
+      }
+    });
+  }
+</script>
+
+<h4>Log a message</h4>
+<ol>
+<li>Enter message text: <input type="text" value="some log message" id="js-log-input" class="span3">
+<li>Now press one of these buttons:
+<div class="btn-group">
+  <button class="btn" onclick="report_message('debug');">Debug</button>
+  <button class="btn" onclick="report_message('info');">Info</button>
+  <button class="btn" onclick="report_message('warning');">Warning</button>
+  <button class="btn" onclick="report_message('error');">Error</button>
+  <button class="btn" onclick="report_message('critical');">Critical</button>
+</div>
+</li>
+</ol>
+
+<hr>
+
+<h4>Credits</h4>
+
+<p>This simple app is based on the <a target="_blank" href="https://github.com/RailsApps/rails3-bootstrap-devise-cancan">rails3-bootstrap-device-cancan</a> tutorial app.</p>
