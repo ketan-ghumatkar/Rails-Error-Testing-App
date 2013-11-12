@@ -35,14 +35,14 @@ group :development, :test do
 end
 
 # Error catching
-gem 'honeybadger'
-gem "bugsnag"
-gem 'project_106', "0.0.1"
-gem 'exceptional'
-gem "coalmine"
-gem 'rollbar', '~> 0.10.3'
+# gem 'honeybadger'
+# gem "bugsnag"
+gem 'project_106', "0.0.3"
+# gem 'exceptional'
+# gem "coalmine"
+# gem 'rollbar', '~> 0.10.3'
 gem 'newrelic_rpm'
-gem "airbrake"
+# gem "airbrake"
 
 
 

@@ -3,9 +3,9 @@
 # Ruby, Java, .NET, PHP, and Python applications with deep visibility and low overhead.
 # For more information, visit www.newrelic.com.
 #
-# Generated June 25, 2013
+# Generated October 29, 2013
 #
-# This configuration file is custom generated for Rollbar_2
+# This configuration file is custom generated for Weboniselab_5
 
 
 # Here are the settings that are common to all environments
@@ -15,7 +15,7 @@ common: &default_settings
   # You must specify the license key associated with your New Relic
   # account.  This key binds your Agent's data to your account in the
   # New Relic service.
-  license_key: '62ec9abae055902a3482b59bf8424692555fb1fc'
+  license_key: '336f4b41905f29deb80351660a784ffbaced5311'
 
   # Agent Enabled (Ruby/Rails Only)
   # Use this setting to force the agent to run or not run.
